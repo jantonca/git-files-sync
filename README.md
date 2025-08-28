@@ -541,16 +541,19 @@ export const CONFIG = {
 };
 ```
 
+
 ## 📝 Contributing
 
-When adding new features to the content management system:
+When adding new features to the git files sync system:
 
-1. **Add to appropriate lib/ subdirectory**
+1. **Add to the appropriate `src/` subdirectory**
 2. **Update this README.md with new commands/features**
-3. **Add tests to test-config.js**
-4. **Update CLI help in content-cli.js**
+3. **Add tests to the relevant file in `tests/`**
+4. **Update CLI help in `content-cli.js`**
 5. **Document configuration options**
 
 ## 📄 License
 
-This content management system is designed to be portable and reusable across projects. Copy and modify as needed for your use case.
+This project is licensed under the [MIT License](./LICENSE).
+
+`@jantonca/git-files-sync` is designed to be portable and reusable across projects. Copy and modify as needed for your use case.
