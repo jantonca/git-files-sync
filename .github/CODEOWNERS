@@ -1,0 +1,24 @@
+# Global code ownership
+* @jantonca
+
+# Core system files
+/src/core/ @jantonca
+/src/services/ @jantonca
+
+# CLI and tools
+/bin/ @jantonca
+/tools/ @jantonca
+
+# Configuration and templates
+/templates/ @jantonca
+*.config.js @jantonca
+
+# Documentation
+/docs/ @jantonca
+README.md @jantonca
+CONTRIBUTING.md @jantonca
+
+# CI/CD and GitHub configuration
+/.github/ @jantonca
+package.json @jantonca
+LICENSE @jantonca
