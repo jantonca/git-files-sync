@@ -71,5 +71,8 @@ jobs:
       - name: Check package structure
         run: npm run validate
         
+      - name: Run linter
+        run: npm run lint
+        
       - name: Verify exports
         run: node -e "import('./index.js').then(mod => console.log('✅ Exports:', Object.keys(mod))).catch(err => { console.error('❌ Export error:', err.message); process.exit(1); })"

@@ -378,7 +378,7 @@ module.exports = { CONFIG };
 `;
   }
 
-  async showNextSteps(framework = 'generic') {
+  async showNextSteps() {
     console.log('');
     console.log('🎉 Setup Complete! Next Steps:');
     console.log('');
@@ -447,7 +447,7 @@ module.exports = { CONFIG };
     
     const template = {
       "// Add these to your package.json scripts section": "",
-      "scripts": scripts,
+      scripts,
       "// Framework-specific examples": {
         "astro": {
           "dev": "npm run predev && astro dev",

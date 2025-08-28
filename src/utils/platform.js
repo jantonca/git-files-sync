@@ -101,7 +101,7 @@ export function getTempDir() {
 export function getCompatibilityReport() {
   const platform = getPlatformInfo();
   const checks = {
-    platform: platform,
+    platform,
     git: {
       available: false,
       command: null,
@@ -123,7 +123,7 @@ export function getCompatibilityReport() {
     checks.git = {
       available: true,
       command: gitCmd,
-      version: version
+      version
     };
   } catch (error) {
     checks.git.error = error.message;

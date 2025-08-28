@@ -38,7 +38,7 @@
     "cleanup:dry-run": "node tools/cleanup.js --dry-run",
     "validate": "node tools/package-validator.js .",
     "migrate": "node tools/migrate.js .",
-    "lint": "echo \"Linting not configured - package uses Node.js built-ins only\"",
+    "lint": "eslint src/ bin/ tools/ --ext .js",
     "build": "echo \"No build step required - pure ES modules\"",
     "dev": "node bin/content-cli.js --watch",
     "setup": "node bin/setup.js",
@@ -69,7 +69,9 @@
   "engines": {
     "node": ">=16.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
   "files": [
     "src/core/",
     "src/services/",

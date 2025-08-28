@@ -387,7 +387,7 @@ export class LoggingPlugin extends BasePlugin {
       type: 'info',
       message: 'Operation started',
       timestamp: new Date().toISOString(),
-      data: data,
+      data,
     });
     return data;
   }
@@ -397,7 +397,7 @@ export class LoggingPlugin extends BasePlugin {
       type: 'info',
       message: 'Operation completed',
       timestamp: new Date().toISOString(),
-      data: data,
+      data,
     });
     return data;
   }
@@ -407,7 +407,7 @@ export class LoggingPlugin extends BasePlugin {
       type: 'error',
       message: error.message,
       timestamp: new Date().toISOString(),
-      error: error,
+      error,
     });
     return error;
   }
