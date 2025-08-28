@@ -1,0 +1,86 @@
+{
+  "name": "@jantonca/git-files-sync",
+  "version": "1.0.0",
+  "description": "Framework-agnostic git files synchronization system with content fetching and caching",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "content-cli": "./bin/content-cli.js",
+    "content-cli-enhanced": "./bin/content-cli-enhanced.js",
+    "content-setup": "./bin/setup.js",
+    "content-cleanup": "./tools/cleanup.js",
+    "content-migrate": "./tools/migrate.js",
+    "content-validate": "./tools/package-validator.js",
+    "content-test": "./tools/test-runner.js"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./core": "./src/core/index.js",
+    "./services": "./src/services/index.js",
+    "./adapters": "./src/adapters/index.js",
+    "./plugins": "./src/plugins/index.js",
+    "./utils": "./src/utils/index.js",
+    "./tools/cleanup": "./tools/cleanup.js",
+    "./tools/migrate": "./tools/migrate.js",
+    "./tools/validator": "./tools/package-validator.js",
+    "./tools/test-runner": "./tools/test-runner.js"
+  },
+  "scripts": {
+    "test": "node tools/test-runner.js",
+    "test:services": "node tools/test-runner.js services",
+    "test:adapters": "node tools/test-runner.js adapters",
+    "test:utils": "node tools/test-runner.js utils",
+    "test:integration": "node tools/test-runner.js integration",
+    "test:verification": "node tools/test-runner.js verification",
+    "test:config": "node tools/test-runner.js config",
+    "test:all": "node tools/test-runner.js --all",
+    "cleanup": "node tools/cleanup.js",
+    "cleanup:dry-run": "node tools/cleanup.js --dry-run",
+    "validate": "node tools/package-validator.js .",
+    "migrate": "node tools/migrate.js .",
+    "lint": "echo \"Linting not configured - package uses Node.js built-ins only\"",
+    "build": "echo \"No build step required - pure ES modules\"",
+    "dev": "node bin/content-cli.js --watch",
+    "setup": "node bin/setup.js",
+    "cli": "node bin/content-cli.js",
+    "cli:enhanced": "node bin/content-cli-enhanced.js"
+  },
+  "keywords": [
+    "git-files-sync",
+    "git",
+    "caching",
+    "framework-agnostic",
+    "astro",
+    "nextjs",
+    "react",
+    "mdx",
+    "cms"
+  ],
+  "author": "jantonca",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jantonca/git-files-sync.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jantonca/git-files-sync/issues"
+  },
+  "homepage": "https://github.com/jantonca/git-files-sync#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {},
+  "files": [
+    "src/core/",
+    "src/services/",
+    "src/adapters/",
+    "src/plugins/",
+    "src/utils/",
+    "bin/",
+    "tools/",
+    "templates/",
+    "index.js",
+    "content-cli.js",
+    "README.md"
+  ]
+}

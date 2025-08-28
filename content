@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+
+# Content Management CLI
+# A simplified interface for content management operations
+# Usage: ./content <command> [args...]
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Script directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONTENT_DIR="$SCRIPT_DIR"
+
+# Print colored output
+print_info() {
+    echo -e "${BLUE}ℹ${NC} $1"
+}
+
+print_success() {
+    echo -e "${GREEN}✓${NC} $1"
+}
+
+print_warning() {
+    echo -e "${YELLOW}⚠${NC} $1"
+}
+
+print_error() {
+    echo -e "${RED}✗${NC} $1"
+}
+
+# Show help
+show_help() {
+    cat << EOF
+Content Management CLI
+
+Usage: ./content <command> [options]
+       content-management/content <command> [options]
+
+Commands:
+  info                 Show content management health status
+  cache clear          Clear content cache
+  stats                Show content statistics
+  test                 Test content configuration
+  performance          Show performance metrics
+  plugins list         List available plugins
+  cleanup              List content cleanup suggestions
+
+  fetch                Fetch content (equivalent to npm run content:fetch)
+  watch                Watch for content changes
+  force                Force fetch content
+
+  help                 Show this help message
+
+Examples:
+  ./content info                    (from content-management directory)
+  content-management/content info   (from project root)
+  ./content cache clear
+  ./content stats
+  ./content fetch
+  ./content watch
+
+EOF
+}
+
+# Main command handler
+main() {
+    if [ $# -eq 0 ]; then
+        show_help
+        exit 0
+    fi
+
+    local command="$1"
+    shift
+
+    case "$command" in
+        "info")
+            print_info "Running content health check..."
+            node "$CONTENT_DIR/content-manager.js" health
+            ;;
+
+        "cache")
+            if [ "$1" = "clear" ]; then
+                print_info "Clearing content cache..."
+                node "$CONTENT_DIR/content-cli.js" cache clear
+            else
+                print_error "Usage: ./content cache clear"
+                exit 1
+            fi
+            ;;
+
+        "stats")
+            print_info "Generating content statistics..."
+            node "$CONTENT_DIR/content-cli.js" stats
+            ;;
+
+        "test")
+            print_info "Testing content configuration..."
+            node "$CONTENT_DIR/test-config.js"
+            ;;
+
+        "performance")
+            print_info "Running performance analysis..."
+            node "$CONTENT_DIR/content-cli.js" performance
+            ;;
+
+        "plugins")
+            if [ "$1" = "list" ]; then
+                print_info "Listing available plugins..."
+                node "$CONTENT_DIR/content-cli.js" plugins list
+            else
+                print_error "Usage: ./content plugins list"
+                exit 1
+            fi
+            ;;
+
+        "cleanup")
+            print_info "Analyzing content for cleanup suggestions..."
+            node "$CONTENT_DIR/content-cleanup.js" --list
+            ;;
+
+        "fetch")
+            print_info "Fetching content..."
+            node "$CONTENT_DIR/content-fetcher.js" "$@"
+            ;;
+
+        "watch")
+            print_info "Starting content watcher..."
+            node "$CONTENT_DIR/content-fetcher.js" --watch "$@"
+            ;;
+
+        "force")
+            print_info "Force fetching content..."
+            node "$CONTENT_DIR/content-fetcher.js" --force "$@"
+            ;;
+
+        "help"|"-h"|"--help")
+            show_help
+            ;;
+
+        *)
+            print_error "Unknown command: $command"
+            echo ""
+            show_help
+            exit 1
+            ;;
+    esac
+}
+
+# Check if we're in the content-management directory
+if [ ! -f "$SCRIPT_DIR/content-manager.js" ]; then
+    print_error "Content management files not found in: $SCRIPT_DIR"
+    print_info "Make sure you're running this script from the content-management directory"
+    exit 1
+fi
+
+# Run main function
+main "$@"

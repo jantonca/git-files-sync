@@ -1,0 +1,85 @@
+{
+  "// CI/CD Pipeline Scripts": "// Optimized scripts for continuous integration and deployment",
+  "scripts": {
+    "// CI/CD Content Operations": "",
+    "ci:content": "npx content-cli fetch --force --no-cache --ci",
+    "ci:validate": "npx content-validate . --strict --ci",
+    "ci:test": "npx content-test --all --ci --coverage",
+    "ci:build": "npm run ci:content && <your-build-command>",
+
+    "// Pre-deployment Validation": "",
+    "predeploy": "npm run ci:content && npm run ci:validate && npm run ci:test",
+    "deploy:staging": "npm run predeploy && <your-build-command> && npm run deploy:staging:do",
+    "deploy:production": "npm run predeploy && <your-build-command> && npm run deploy:production:do",
+
+    "// Content Integrity Checks": "",
+    "integrity:check": "npx content-validate . --integrity --links --structure",
+    "integrity:fix": "npx content-cleanup --fix-links --fix-structure",
+    "security:scan": "npx content-validate . --security --malware",
+
+    "// Performance Testing": "",
+    "perf:test": "npx content-cli-enhanced performance-demo --ci",
+    "perf:baseline": "npx content-cli performance --baseline",
+    "perf:compare": "npx content-cli performance --compare",
+
+    "// Automated Quality Gates": "",
+    "quality:gate": "npm run ci:validate && npm run integrity:check && npm run perf:test",
+    "quality:report": "npx content-cli report --quality --output=junit",
+    "coverage:content": "npx content-test --coverage --output=lcov",
+
+    "// Environment-specific Builds": "",
+    "build:dev": "npx content-cli fetch --branch=dev && <your-build-command>",
+    "build:staging": "npx content-cli fetch --branch=staging && <your-build-command>", 
+    "build:prod": "npx content-cli fetch --branch=main --force && <your-build-command>",
+
+    "// Cache Management for CI": "",
+    "cache:clear:ci": "npx content-cli cache clear --ci",
+    "cache:warm": "npx content-cli cache warm --critical",
+    "cache:stats": "npx content-cli cache stats --json",
+
+    "// Rollback and Recovery": "",
+    "rollback:prepare": "npx content-cli backup create --pre-deploy",
+    "rollback:execute": "npx content-cli backup restore --latest",
+    "rollback:verify": "npx content-validate . --post-rollback",
+
+    "// Monitoring and Alerts": "",
+    "monitor:health": "npx content-cli health --json",
+    "monitor:metrics": "npx content-cli metrics --export",
+    "alert:setup": "npx content-cli alerts --configure",
+
+    "// Multi-environment Content": "",
+    "content:sync:dev": "npx content-cli fetch --env=dev",
+    "content:sync:staging": "npx content-cli fetch --env=staging",
+    "content:sync:prod": "npx content-cli fetch --env=production",
+
+    "// Automated Testing": "",
+    "test:integration": "npx content-test --integration --headless",
+    "test:e2e": "npx content-test --e2e --ci",
+    "test:visual": "npx content-test --visual-regression --ci",
+
+    "// Release Management": "",
+    "release:prepare": "npm run quality:gate && npm run rollback:prepare",
+    "release:deploy": "npm run build:prod && npm run deploy:production",
+    "release:verify": "npm run monitor:health && npm run test:e2e"
+  },
+
+  "// CI/CD Environment Variables": {
+    "// Set these in your CI/CD environment": "",
+    "CONTENT_REPO_TOKEN": "// GitHub/GitLab token for content repository access",
+    "CONTENT_CACHE_KEY": "// Cache key for CI/CD pipeline caching",
+    "CONTENT_ENV": "// Environment: dev, staging, production",
+    "CONTENT_BRANCH": "// Branch to fetch content from",
+    "CI": "true"
+  },
+
+  "// CI/CD Dependencies": {
+    "dependencies": {
+      "@jantonca/git-files-sync": "^1.0.0"
+    },
+    "devDependencies": {
+      "jest": "^29.0.0",
+      "playwright": "^1.0.0",
+      "lighthouse-ci": "^0.12.0"
+    }
+  }
+}

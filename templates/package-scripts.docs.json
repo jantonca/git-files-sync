@@ -1,0 +1,79 @@
+{
+  "// Documentation Site Scripts": "// Optimized scripts for documentation and API sites",
+  "scripts": {
+    "// Content Management for Documentation": "",
+    "content:fetch": "npx content-cli fetch",
+    "content:force": "npx content-cli fetch --force",
+    "content:watch": "npx content-cli fetch --watch",
+    "content:sync": "npx content-cli fetch --api-sync",
+
+    "// Documentation Development": "",
+    "dev": "npm run start:docs",
+    "dev:force": "npx content-cli fetch --force && npm run start:docs",
+    "dev:watch": "npx content-cli fetch --watch & npm run start:docs",
+    "dev:watch:force": "npx content-cli fetch --watch --force & npm run start:docs",
+    "build": "docusaurus build",
+    "serve": "docusaurus build && npx serve docs/build",
+    "predev": "npx content-cli fetch",
+    "prebuild": "npx content-cli fetch --force",
+
+    "// Documentation Tools": "",
+    "docs:search": "npx content-cli index --search",
+    "docs:nav": "npx content-cli generate --navigation",
+    "docs:toc": "npx content-cli generate --table-of-contents",
+    "docs:api": "npx content-cli sync --api-docs",
+
+    "// Content Validation for Docs": "",
+    "content:validate": "npx content-validate . --docs",
+    "content:links": "npx content-validate . --links --internal",
+    "content:structure": "npx content-validate . --structure --headings",
+    "content:completeness": "npx content-validate . --completeness",
+
+    "// API Documentation": "",
+    "api:generate": "npx openapi-generator generate -i api/openapi.yaml -o docs/api",
+    "api:validate": "npx swagger-validator api/openapi.yaml",
+    "api:serve": "npx swagger-ui-serve api/openapi.yaml",
+
+    "// Documentation Quality": "",
+    "docs:lint": "npx content-validate . --docs --strict",
+    "docs:spell": "npx content-validate . --spelling --technical",
+    "docs:accessibility": "npx content-validate . --a11y",
+    "docs:seo": "npx content-validate . --seo --docs",
+
+    "// Multi-version Support": "",
+    "version:create": "npx content-cli version --create",
+    "version:deploy": "npx content-cli version --deploy",
+    "version:list": "npx content-cli version --list",
+
+    "// Search and Indexing": "",
+    "search:index": "npx content-cli search --build-index",
+    "search:test": "npx content-cli search --test",
+    "search:deploy": "npx content-cli search --deploy",
+
+    "// Content Maintenance": "",
+    "content:update": "npx content-cli update --preserve-structure",
+    "content:migrate": "npx content-migrate . --docs",
+    "content:cleanup": "npx content-cleanup --outdated --broken-links",
+
+    "// Translation Support": "",
+    "i18n:extract": "npx content-cli i18n --extract",
+    "i18n:validate": "npx content-cli i18n --validate",
+    "i18n:sync": "npx content-cli i18n --sync",
+
+    "// Performance and Analytics": "",
+    "perf:analyze": "npx content-cli-enhanced performance-demo --docs",
+    "analytics:usage": "npx content-cli analytics --page-views",
+    "analytics:search": "npx content-cli analytics --search-terms"
+  },
+
+  "// Documentation-specific Dependencies": {
+    "dependencies": {
+      "@jantonca/git-files-sync": "^1.0.0"
+    },
+    "devDependencies": {
+      "@docusaurus/core": "^3.0.0",
+      "swagger-ui-express": "^5.0.0",
+      "openapi-generator-cli": "^2.0.0"
+    }
+  }
+}

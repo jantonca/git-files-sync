@@ -1,0 +1,78 @@
+{
+  "scripts": {
+    "// Content Management Scripts": "// Add these to your package.json scripts section",
+
+    "// Basic Content Operations": "",
+    "content:fetch": "npx content-cli fetch",
+    "content:update": "npx content-cli update",
+    "content:stats": "npx content-cli stats",
+    "content:setup": "npx content-setup",
+
+    "// Development Workflow": "",
+    "predev": "npx content-cli fetch",
+    "prebuild": "npx content-cli fetch --force",
+    "content:dev": "npx content-cli fetch --watch",
+
+    "// Content Management Tools": "",
+    "content:cleanup": "npx content-cleanup --list",
+    "content:cleanup:force": "npx content-cleanup --delete",
+    "content:validate": "npx content-validate .",
+    "content:migrate": "npx content-migrate .",
+
+    "// Testing and Quality": "",
+    "content:test": "npx content-test --all",
+    "content:test:config": "npx content-test --config",
+    "content:test:services": "npx content-test --services",
+    "content:lint": "npx content-validate . --strict",
+
+    "// Enhanced CLI Features": "",
+    "content:interactive": "npx content-cli-enhanced interactive",
+    "content:monitor": "npx content-cli-enhanced performance-demo",
+    "content:enhanced": "npx content-cli-enhanced stats",
+
+    "// Cache Management": "",
+    "content:cache:clear": "npx content-cli cache clear",
+    "content:cache:stats": "npx content-cli cache stats",
+    "content:cache:optimize": "npx content-cli cache optimize",
+
+    "// Backup and Recovery": "",
+    "content:backup": "npx content-cli backup create",
+    "content:backup:list": "npx content-cli backup list",
+    "content:restore": "npx content-cli backup restore",
+
+    "// Framework-Specific Scripts": "",
+    "// For Astro projects": "",
+    "astro:content": "npx content-cli fetch && astro build",
+    "astro:dev:content": "npx content-cli fetch --watch & astro dev",
+
+    "// For Next.js projects": "",
+    "next:content": "npx content-cli fetch && next build",
+    "next:dev:content": "npx content-cli fetch --watch & next dev",
+
+    "// For React projects": "",
+    "react:content": "npx content-cli fetch && npm run build",
+    "react:dev:content": "npx content-cli fetch --watch & npm start",
+
+    "// CI/CD Scripts": "",
+    "ci:content": "npx content-cli fetch --force --no-cache",
+    "ci:validate": "npx content-validate . && npx content-test --all",
+    "deploy:content": "npx content-cli fetch --force && npm run build"
+  },
+
+  "// Optional: Content Management Dependencies": {
+    "// If you want to install as a dependency instead of global": "",
+    "dependencies": {
+      "@jantonca/git-files-sync": "^1.0.0"
+    }
+  },
+
+  "// Optional: NPM Hooks": {
+    "// Automatically fetch content before certain operations": "",
+    "scripts": {
+      "preinstall": "npx content-cli fetch --if-needed",
+      "postinstall": "npx content-validate . --silent",
+      "prestart": "npx content-cli fetch",
+      "prebuild": "npx content-cli fetch --force"
+    }
+  }
+}

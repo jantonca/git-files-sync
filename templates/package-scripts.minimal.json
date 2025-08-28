@@ -1,0 +1,41 @@
+{
+  "// Minimal Scripts": "// Essential scripts for simple projects",
+  "scripts": {
+    "// Basic Content Operations": "",
+    "content:fetch": "npx content-cli fetch",
+    "content:force": "npx content-cli fetch --force",
+    "content:watch": "npx content-cli fetch --watch",
+    "content:watch:force": "npx content-cli fetch --watch --force",
+    "content:stats": "npx content-cli stats",
+
+    "// Simple Development Workflow": "",
+    "dev": "vite",
+    "dev:force": "npx content-cli fetch --force && vite",
+    "dev:watch": "npx content-cli fetch --watch & vite",
+    "dev:watch:force": "npx content-cli fetch --watch --force & vite",
+    "build": "vite build",
+    "start": "vite preview",
+    "predev": "npx content-cli fetch",
+    "prebuild": "npx content-cli fetch --force",
+
+    "// Basic Validation": "",
+    "validate": "npx content-validate .",
+    "cleanup": "npx content-cleanup --list",
+
+    "// Simple Testing": "",
+    "test": "npx content-test --config"
+  },
+
+  "// Minimal Dependencies": {
+    "dependencies": {
+      "@jantonca/git-files-sync": "^1.0.0"
+    }
+  },
+
+  "// Usage Instructions": {
+    "// 1. Install the package": "npm install @jantonca/git-files-sync",
+    "// 2. Run setup": "npx content-setup",
+    "// 3. Start development": "npm run dev",
+    "// 4. Build for production": "npm run build"
+  }
+}

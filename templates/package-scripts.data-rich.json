@@ -1,0 +1,74 @@
+{
+  "// Data-Rich Project Scripts": "// Optimized scripts for projects with complex data from CMS platforms",
+  "scripts": {
+    "// Data Synchronization": "",
+    "data:fetch": "npx content-cli fetch",
+    "data:sync": "npx content-cli fetch --force",
+    "data:watch": "npx content-cli fetch --watch",
+    "data:validate": "npx content-cli validate",
+
+    "// Development Workflow": "",
+    "dev": "npm run start:dev",
+    "dev:force": "npx content-cli fetch --force && npm run start:dev",
+    "dev:watch": "npx content-cli fetch --watch & npm run start:dev",
+    "dev:watch:force": "npx content-cli fetch --watch --force & npm run start:dev",
+    "build": "astro build",
+    "preview": "astro build && astro preview",
+    "predev": "npx content-cli fetch",
+    "prebuild": "npx content-cli fetch --force",
+
+    "// Data Operations": "",
+    "data:stats": "npx content-cli stats --detailed",
+    "data:structure": "npx content-cli structure analyze",
+    "data:backup": "npx content-backup create",
+    "data:restore": "npx content-backup restore",
+
+    "// Blog-specific Tools": "",
+    "blog:rss": "astro build && npx generate-rss",
+    "blog:sitemap": "astro build && npx generate-sitemap",
+    "blog:social": "npx generate-social-cards",
+    "blog:seo": "npx content-validate . --seo",
+
+    "// Content Quality and SEO": "",
+    "content:validate": "npx content-validate . --blog",
+    "content:seo-check": "npx content-validate . --seo --links",
+    "content:spell-check": "npx content-validate . --spelling",
+    "content:readability": "npx content-validate . --readability",
+
+    "// Publishing Workflow": "",
+    "publish:draft": "npx content-cli publish --draft",
+    "publish:schedule": "npx content-cli publish --schedule",
+    "publish:live": "npx content-cli fetch --force && astro build && npm run deploy",
+
+    "// Analytics and Monitoring": "",
+    "analytics:views": "npx content-cli analytics --views",
+    "analytics:popular": "npx content-cli analytics --popular",
+    "monitor:performance": "npx content-cli-enhanced performance-demo",
+
+    "// Content Maintenance": "",
+    "content:cleanup": "npx content-cleanup --old-posts --drafts",
+    "content:archive": "npx content-cli archive --older-than=1y",
+    "content:optimize": "npx content-cli optimize --images --compress",
+
+    "// Backup and Recovery": "",
+    "backup:content": "npx content-cli backup create --full",
+    "backup:restore": "npx content-cli backup restore",
+    "backup:list": "npx content-cli backup list",
+
+    "// Social Media Integration": "",
+    "social:post": "npx content-cli social --auto-post",
+    "social:schedule": "npx content-cli social --schedule",
+    "newsletter:send": "npx content-cli newsletter --latest"
+  },
+
+  "// Blog-specific Dependencies": {
+    "dependencies": {
+      "@jantonca/git-files-sync": "^1.0.0"
+    },
+    "devDependencies": {
+      "rss-generator": "^1.0.0",
+      "sitemap-generator": "^1.0.0",
+      "social-card-generator": "^1.0.0"
+    }
+  }
+}

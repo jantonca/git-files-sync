@@ -1,0 +1,53 @@
+{
+  "// Astro Project Scripts": "// Optimized scripts for Astro projects",
+  "scripts": {
+    "// Content Management for Astro": "",
+    "content:fetch": "npx content-cli fetch",
+    "content:force": "npx content-cli fetch --force",
+    "content:watch": "npx content-cli fetch --watch",
+    "content:watch:force": "npx content-cli fetch --watch --force",
+
+    "// Astro Development Workflow": "",
+    "dev": "astro dev",
+    "dev:force": "npx content-cli fetch --force && astro dev",
+    "dev:watch": "npx content-cli fetch --watch & astro dev",
+    "dev:watch:force": "npx content-cli fetch --watch --force & astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "start": "astro dev",
+    
+    "// npm lifecycle hooks (auto-run before dev/build)": "",
+    "predev": "npx content-cli fetch",
+    "prebuild": "npx content-cli fetch --force",
+
+    "// Content-Enhanced Astro Commands": "",
+    "astro:check": "npx content-cli fetch && astro check",
+    "astro:sync": "npx content-cli fetch && astro sync",
+    "astro:add": "astro add",
+
+    "// Content Management Tools": "",
+    "content:stats": "npx content-cli stats",
+    "content:cleanup": "npx content-cleanup --list",
+    "content:validate": "npx content-validate .",
+    "content:interactive": "npx content-cli-enhanced interactive",
+
+    "// Astro + Content Testing": "",
+    "test": "npx content-test --all && astro check",
+    "test:content": "npx content-test --all",
+    "test:astro": "astro check",
+    "lint": "npx content-validate . && astro check",
+
+    "// Deployment Scripts": "",
+    "deploy:build": "astro build",
+    "predeploy:build": "npx content-cli fetch --force"
+  },
+
+  "// Recommended Dependencies for Astro + Content Management": {
+    "dependencies": {
+      "@jantonca/git-files-sync": "^1.0.0"
+    },
+    "devDependencies": {
+      "astro": "^4.0.0"
+    }
+  }
+}

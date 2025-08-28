@@ -1,0 +1,67 @@
+{
+  "// Next.js Project Scripts": "// Optimized scripts for Next.js projects",
+  "scripts": {
+    "// Content Management for Next.js": "",
+    "content:fetch": "npx content-cli fetch",
+    "content:force": "npx content-cli fetch --force",
+    "content:watch": "npx content-cli fetch --watch",
+    "content:watch:force": "npx content-cli fetch --watch --force",
+
+    "// Next.js Development Workflow": "",
+    "dev": "next dev",
+    "dev:force": "npx content-cli fetch --force && next dev",
+    "dev:watch": "npx content-cli fetch --watch & next dev",
+    "dev:watch:force": "npx content-cli fetch --watch --force & next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "predev": "npx content-cli fetch",
+    "prebuild": "npx content-cli fetch --force",
+
+    "// Content-Enhanced Next.js Commands": "",
+    "next:analyze": "npx content-cli fetch && ANALYZE=true next build",
+    "next:export": "npx content-cli fetch --force && next build && next export",
+    "next:info": "next info",
+
+    "// Content Management Tools": "",
+    "content:stats": "npx content-cli stats",
+    "content:cleanup": "npx content-cleanup --list",
+    "content:validate": "npx content-validate .",
+    "content:interactive": "npx content-cli-enhanced interactive",
+
+    "// Next.js + Content Testing": "",
+    "test": "npx content-test --all && next lint",
+    "test:content": "npx content-test --all",
+    "test:next": "next lint",
+    "test:build": "next build",
+
+    "// Development Tools": "",
+    "type-check": "tsc --noEmit",
+    "analyze": "ANALYZE=true next build",
+
+    "// Deployment Scripts": "",
+    "deploy:content": "npx content-cli fetch --force",
+    "deploy:build": "npm run deploy:content && next build",
+    "deploy:export": "npm run deploy:content && next build && next export",
+    "deploy:vercel": "npm run deploy:content && vercel --prod",
+
+    "// ISR and Cache Management": "",
+    "revalidate": "npx content-cli fetch --force && curl -X POST $REVALIDATE_URL",
+    "cache:clear": "npx content-cli cache clear"
+  },
+
+  "// Recommended Dependencies for Next.js + Content Management": {
+    "dependencies": {
+      "@jantonca/git-files-sync": "^1.0.0",
+      "next": "^14.0.0",
+      "react": "^18.0.0",
+      "react-dom": "^18.0.0"
+    },
+    "devDependencies": {
+      "@types/node": "^20.0.0",
+      "@types/react": "^18.0.0",
+      "@types/react-dom": "^18.0.0",
+      "typescript": "^5.0.0"
+    }
+  }
+}

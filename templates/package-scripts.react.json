@@ -1,0 +1,93 @@
+{
+  "// React Project Scripts": "// Optimized scripts for React projects (CRA, Vite, custom)",
+  "scripts": {
+    "// Content Management for React": "",
+    "content:fetch": "npx content-cli fetch",
+    "content:force": "npx content-cli fetch --force",
+    "content:watch": "npx content-cli fetch --watch",
+    "content:watch:force": "npx content-cli fetch --watch --force",
+
+    "// React Development Workflow (Framework-Agnostic)": "",
+    "dev": "react-scripts start",
+    "dev:force": "npx content-cli fetch --force && react-scripts start",
+    "dev:watch": "npx content-cli fetch --watch & react-scripts start", 
+    "dev:watch:force": "npx content-cli fetch --watch --force & react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predev": "npx content-cli fetch",
+    "prebuild": "npx content-cli fetch --force",
+
+    "// Alternative: Vite-based React Development": "",
+    "dev:vite": "vite",
+    "dev:vite:force": "npx content-cli fetch --force && vite",
+    "dev:vite:watch": "npx content-cli fetch --watch & vite",
+    "dev:vite:watch:force": "npx content-cli fetch --watch --force & vite",
+    "build:vite": "vite build",
+    "preview:vite": "vite preview",
+    "predev:vite": "npx content-cli fetch",
+    "prebuild:vite": "npx content-cli fetch --force",
+
+    "// Legacy React Commands (for compatibility)": "",
+    "start": "react-scripts start",
+    "start:vite": "vite",
+    "analyze": "npx content-cli fetch && react-scripts build && npx bundle-analyzer build/static/js/*.js",
+
+    "// Content Management Tools": "",
+    "content:stats": "npx content-cli stats",
+    "content:cleanup": "npx content-cleanup --list",
+    "content:validate": "npx content-validate .",
+    "content:interactive": "npx content-cli-enhanced interactive",
+
+    "// Testing and Quality": "",
+    "test:content": "npx content-test --all",
+    "test:react": "react-scripts test --watchAll=false",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
+    "lint": "npx content-validate . && eslint src/",
+    "lint:fix": "eslint src/ --fix",
+
+    "// TypeScript (if using)": "",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+
+    "// Development Tools": "",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+
+    "// Deployment Scripts": "",
+    "deploy:content": "npx content-cli fetch --force",
+    "deploy:build": "npm run deploy:content && react-scripts build",
+    "deploy:netlify": "npm run deploy:build && netlify deploy --prod --dir=build",
+    "deploy:surge": "npm run deploy:build && surge build/",
+
+    "// Performance and Optimization": "",
+    "optimize": "react-scripts build && npx webpack-bundle-analyzer build/static/js/*.js",
+    "size": "react-scripts build && npx bundlesize"
+  },
+
+  "// Recommended Dependencies for React + Content Management": {
+    "dependencies": {
+      "@jantonca/git-files-sync": "^1.0.0",
+      "react": "^18.0.0",
+      "react-dom": "^18.0.0"
+    },
+    "devDependencies": {
+      "@types/react": "^18.0.0",
+      "@types/react-dom": "^18.0.0",
+      "typescript": "^5.0.0"
+    }
+  },
+
+  "// Alternative: Vite-specific dependencies": {
+    "dependencies": {
+      "@jantonca/git-files-sync": "^1.0.0",
+      "react": "^18.0.0",
+      "react-dom": "^18.0.0"
+    },
+    "devDependencies": {
+      "@vitejs/plugin-react": "^4.0.0",
+      "vite": "^5.0.0",
+      "typescript": "^5.0.0"
+    }
+  }
+}
